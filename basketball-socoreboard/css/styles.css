@@ -1,0 +1,242 @@
+:root {
+  --primary-bg-color: #f1eee0;
+  --primary-black-color: #22201e;
+  --orange-color: #f25f1b;
+  --yellow-color: #e69e22;
+  --green-color: #1d695d;
+  --blue-color: #0f558f;
+  --secondary-black-color: #383433;
+}
+
+@font-face {
+  font-family: "Timer Ulil";
+  src: url("/fonts/timer-ulil.ttf") format("truetype");
+}
+
+body,
+h3,
+span {
+  margin: 0;
+}
+
+body {
+  color: var(--primary-black-color);
+  background-color: var(--primary-bg-color);
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+/* Utilities */
+.yellow-count {
+  color: var(--yellow-color) !important;
+}
+
+.orange-count {
+  color: var(--orange-color) !important;
+}
+
+.green-count {
+  color: var(--green-color) !important;
+}
+
+/* Text Shadow */
+.text-shadow-effect {
+  animation-name: textShadow;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes textShadow {
+  from {
+    text-shadow: 0 0 1px #ff6214, 0 0 2px #ff7214, 0 0 3px #ff9514,
+      0 0 4px #ffc414;
+  }
+
+  to {
+    text-shadow: 0 0 10px #ff6214, 0 0 10px #ff7214, 0 0 20px #ff9514,
+      0 0 40px #ffc414;
+  }
+}
+
+/* SCOREBOARD */
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+  height: 100vh;
+}
+
+.scoreboard {
+  box-sizing: border-box;
+  background-color: var(--primary-bg-color);
+  border: 3px solid var(--primary-black-color);
+  width: auto;
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  border-radius: 12px;
+  padding: 0 20px;
+}
+
+.title {
+  font-size: 45px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  line-height: 1;
+}
+
+.score {
+  display: block;
+  font-family: "Timer Ulil";
+  font-size: 65px;
+  background-color: var(--primary-black-color);
+  color: var(--secondary-black-color);
+  text-align: right;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.extra-scores {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.data-fouls,
+.data-bonus,
+.data-tol,
+.poss-left,
+.running-period,
+.poss-right {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.fouls-title,
+.tol-title,
+.period-title,
+.poss-title {
+  font-size: 18px;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.fouls-value,
+.tol-value {
+  font-family: "Timer Ulil";
+  background-color: var(--primary-black-color);
+  font-size: 40px;
+  line-height: 1;
+}
+
+.fouls-value {
+  color: var(--green-color);
+}
+
+.tol-value {
+  color: var(--blue-color);
+}
+
+.bonus {
+  font-family: "Timer Ulil";
+  color: var(--yellow-color);
+  font-size: 18px;
+  background-color: var(--primary-black-color);
+  padding: 0 5px;
+}
+
+/* Timer */
+.timer {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.countdown {
+  display: flex;
+  gap: 3px;
+  border: 3px solid var(--primary-black-color);
+  margin-top: 10px;
+  border-radius: 12px;
+  padding: 6px;
+}
+
+.countdown span {
+  font-family: "Timer Ulil";
+  font-size: 65px;
+  color: var(--secondary-black-color);
+  line-height: 1;
+}
+
+.minutes,
+.seconds {
+  background-color: var(--primary-black-color);
+}
+
+/* Colon */
+.colon-div {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.colon {
+  width: 10px;
+  height: 10px;
+  background-color: var(--primary-black-color);
+}
+
+/* Period */
+.poss-left,
+.running-period,
+.poss-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.timing {
+  display: flex;
+  justify-content: space-between;
+}
+
+.period-value {
+  align-self: center;
+  font-family: "Timer Ulil";
+  background-color: var(--primary-black-color);
+  color: var(--secondary-black-color);
+  font-size: 50px;
+  line-height: 1;
+}
+
+.icon-box {
+  background-color: var(--primary-black-color);
+  width: 30px;
+  height: 30px;
+}
+
+.icon-box img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* BUTTONS */
+.buttons {
+  display: flex;
+  gap: 30px;
+}
+
+.buttons button {
+  border: 1px solid var(--secondary-black-color);
+  padding: 8px 16px;
+  border-radius: 12px;
+}
+
+.buttons button:enabled:hover {
+  background-color: #dddacd;
+}

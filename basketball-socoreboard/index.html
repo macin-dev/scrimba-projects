@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Basketball scoreboard</title>
+  </head>
+  <body>
+    <main class="app">
+      <div class="scoreboard container">
+        <!-- HOME -->
+        <div class="data-box">
+          <h3 class="title">home</h3>
+          <span class="score team-a-score"> 000 </span>
+          <div class="extra-scores">
+            <div class="data-fouls">
+              <span class="fouls-value">00</span>
+              <span class="fouls-title">fouls</span>
+            </div>
+            <div class="data-bonus">
+              <span class="bonus">B</span>
+              <span class="bonus">B</span>
+            </div>
+            <div class="data-tol">
+              <span class="tol-value">0</span>
+              <span class="tol-title">tol</span>
+            </div>
+          </div>
+        </div>
+
+        <!--  TIMER -->
+        <div class="timer">
+          <div class="countdown">
+            <span id="time-minutes" class="minutes">00</span>
+            <div class="colon-div">
+              <span class="colon"></span>
+              <span class="colon"></span>
+            </div>
+            <span id="time-seconds" class="seconds">00</span>
+          </div>
+          <div class="timing">
+            <div class="poss-left">
+              <div class="icon-box">
+                <img
+                  src="/icons/arrow-drop-left.svg"
+                  alt="arrow drop left icon"
+                />
+              </div>
+
+              <span class="poss-title">poss</span>
+            </div>
+
+            <div class="running-period">
+              <span class="period-value">0</span>
+              <span class="period-title">period</span>
+            </div>
+
+            <div class="poss-right">
+              <div class="icon-box">
+                <img
+                  src="/icons/arrow-drop-right.svg"
+                  alt="arrow drop right icon"
+                />
+              </div>
+              <span class="poss-title">poss</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- AWAY -->
+        <div class="data-box">
+          <h3 class="title">away</h3>
+          <span class="score team-b-score"> 000 </span>
+          <div class="extra-scores">
+            <div class="data-tol">
+              <span class="tol-value">0</span>
+              <span class="tol-title">tol</span>
+            </div>
+            <div class="data-bonus">
+              <span class="bonus">B</span>
+              <span class="bonus">B</span>
+            </div>
+            <div class="data-fouls">
+              <span class="fouls-value">00</span>
+              <span class="fouls-title">fouls</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button id="start-game" class="btn">Start Game</button>
+        <button id="score-pts" disabled="true">Score</button>
+        <button id="btn-period" disabled="true">Next period</button>
+        <button id="end-game">End game</button>
+      </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="/js/index.js"></script>
+  </body>
+</html>
