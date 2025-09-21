@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google fonts: Barlow and Tomorrow-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow&family=Tomorrow:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Title -->
+    <title>MA | Password Generator</title>
+  </head>
+  <body>
+    <!-- App -->
+    <main id="app">
+      <!-- Container -->
+      <div class="container">
+        <h1 class="title">Password Generator</h1>
+
+        <!-- Form -->
+        <div class="generator-box">
+          <form class="form">
+            <!-- Output password -->
+            <div class="generator-container">
+              <input
+                class="output-password__field"
+                type="text"
+                id="password"
+                name="password"
+                value="1a4Txe3m*%Qm^vdXs!"
+              />
+
+              <!-- Password strength indicator -->
+              <span class="strengthmeter">
+                <img
+                  src="/icons/strength-none.svg"
+                  alt="strnegthmeter icon, level none"
+                />
+              </span>
+
+              <!-- Generate password button -->
+              <button type="submit" class="btn-generate">
+                <img src="/icons/sync-icon.svg" alt="sync icon" />
+              </button>
+            </div>
+
+            <!-- Copy on feature -->
+            <div class="form-copy">
+              <button type="button" class="btn-copy">
+                <span>copy password_</span>
+                <span>
+                  <img
+                    src="/icons/black-arrow-right-icon.svg"
+                    alt="black arrow icon"
+                  />
+                </span>
+              </button>
+            </div>
+
+            <!-- Range slider -->
+            <div class="form-group">
+              <input id="range-slider" type="range" min="5" max="20" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
