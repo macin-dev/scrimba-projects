@@ -171,3 +171,66 @@ input[type="range"] {
   width: 21px;
   height: 21px;
 }
+
+/* 
+  Checkbox Input
+  Keeping a consistent native style accross 
+  different browsers.
+  -----------------------------------------
+  ✅ Tested on last versions of Chrome, Safari,
+  and Mozilla 
+*/
+
+.form-toggles {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 1rem;
+}
+
+.label {
+  /* Font size based on the root size of the document */
+  font-size: 1rem;
+  line-height: 1;
+  /* Add proper alignment between the label and box */
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1.5em auto;
+  gap: 0.35em;
+}
+
+input[type="checkbox"] {
+  /* Support for major browsers */
+  -webkit-appearance: none;
+  /* Standard property */
+  appearance: none;
+  /* Reset margin to 0 */
+  margin: 0;
+  /* Inherit it's parent values: font-size, font-bold, font-style, 
+  font-weight, line-height */
+  font: inherit;
+  /* Set it's own color */
+  color: var(--yellow-color);
+  /* Relative to the font-size of it's parent element */
+  width: 1.5em;
+  height: 1.5em;
+  /* Inherit the color */
+  border: 0.15em solid currentColor;
+  /* Tell the browser to treat input as a container layout */
+  display: grid;
+  /* Center the pseudo-elements inside of the box */
+  place-content: center;
+}
+
+/* Pseudo element */
+input[type="checkbox"]::before {
+  content: "";
+  width: 1.25em;
+  height: 1.25em;
+  transform: scale(0);
+  transition: 150ms transform ease-in-out;
+  box-shadow: inset calc(1.5em - 0.15em) calc(1.5em - 0.15em) currentColor;
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
