@@ -12,7 +12,8 @@
 
 /* RESETING BROWSER STYLES */
 body,
-h1 {
+h1,
+h2 {
   margin: 0;
 }
 
@@ -233,4 +234,46 @@ input[type="checkbox"]::before {
 
 input[type="checkbox"]:checked::before {
   transform: scale(1);
+}
+
+/* RECORD PASSWORD */
+.record {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.record-title {
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.record-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.list-recorded {
+  display: flex;
+  justify-content: space-between;
+}
+
+.password-value {
+  font-size: 16px;
+  line-height: 1.2;
+  letter-spacing: 3.5px;
+}
+
+.btn-clear {
+  font-family: "Tomorrow", sans-serif;
+  font-size: 16px;
+  letter-spacing: 4px;
+  text-align: center;
+  color: var(--yellow-color);
 }
