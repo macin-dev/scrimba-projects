@@ -24,7 +24,14 @@ button {
 
 /* APP STYLING */
 /* Layout */
+#app {
+  display: flex;
+  justify-content: center;
+}
+
 .container {
+  max-width: 800px;
+  width: 100%;
   margin: 50px 20px 0;
 }
 
@@ -285,4 +292,43 @@ input[type="checkbox"]:checked::before {
   letter-spacing: 4px;
   text-align: center;
   color: var(--yellow-color);
+}
+
+/* BREAKPOINTS */
+/* desktop-screen (1200px) */
+@media screen and (min-width: 1200px) {
+  /* Layout  */
+  body {
+    height: 100vh;
+  }
+
+  #app {
+    align-items: center;
+    height: 100%;
+  }
+
+  .app-wrapper {
+    display: flex;
+    gap: 10rem;
+  }
+
+  .container {
+    max-width: 1200px;
+  }
+
+  .generator-box {
+    max-width: 588px;
+    width: 100%;
+  }
+
+  .record {
+    max-width: 390px;
+    width: 100%;
+  }
+
+  /* Title */
+  .title {
+    width: min-content;
+    margin-bottom: 60px;
+  }
 }

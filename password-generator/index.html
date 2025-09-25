@@ -24,105 +24,107 @@
       <div class="container">
         <h1 class="title">Password Generator</h1>
 
-        <!-- Form -->
-        <div class="generator-box">
-          <form class="form">
-            <!-- Output password -->
-            <div class="generator-container">
-              <input
-                class="output-password__field"
-                type="text"
-                id="password"
-                name="password"
-                value="1a4Txe3m*%Qm^vdXs!"
-              />
-
-              <!-- Password strength indicator -->
-              <span class="strengthmeter">
-                <img
-                  src="/icons/strength-none.svg"
-                  alt="strnegthmeter icon, level none"
+        <section class="app-wrapper">
+          <!-- Form -->
+          <div class="generator-box">
+            <form class="form">
+              <!-- Output password -->
+              <div class="generator-container">
+                <input
+                  class="output-password__field"
+                  type="text"
+                  id="password"
+                  name="password"
+                  value="1a4Txe3m*%Qm^vdXs!"
                 />
-              </span>
 
-              <!-- Generate password button -->
-              <button type="submit" class="btn-generate">
-                <img src="/icons/sync-icon.svg" alt="sync icon" />
-              </button>
-            </div>
-
-            <!-- Copy on feature -->
-            <div class="form-copy">
-              <button type="button" class="btn-copy">
-                <span>copy password_</span>
-                <span>
+                <!-- Password strength indicator -->
+                <span class="strengthmeter">
                   <img
-                    src="/icons/black-arrow-right-icon.svg"
-                    alt="black arrow icon"
+                    src="/icons/strength-none.svg"
+                    alt="strnegthmeter icon, level none"
                   />
                 </span>
-              </button>
-            </div>
 
-            <!-- Range slider -->
-            <div class="form-group">
-              <input id="range-slider" type="range" min="5" max="20" />
-            </div>
+                <!-- Generate password button -->
+                <button type="submit" class="btn-generate">
+                  <img src="/icons/sync-icon.svg" alt="sync icon" />
+                </button>
+              </div>
 
-            <!-- Toggles -->
-            <div class="form-toggles">
-              <label class="label" for="uppercase-characters">
-                <input id="uppercase-characters" type="checkbox" />
-                Uppercase letters
-              </label>
+              <!-- Copy on feature -->
+              <div class="form-copy">
+                <button type="button" class="btn-copy">
+                  <span>copy password_</span>
+                  <span>
+                    <img
+                      src="/icons/black-arrow-right-icon.svg"
+                      alt="black arrow icon"
+                    />
+                  </span>
+                </button>
+              </div>
 
-              <label class="label">
-                <input id="lowercase-characters" type="checkbox" />
-                Lowercase letters
-              </label>
+              <!-- Range slider -->
+              <div class="form-group">
+                <input id="range-slider" type="range" min="5" max="20" />
+              </div>
 
-              <label class="label">
-                <input id="numbers-characters" type="checkbox" />
-                Numbers
-              </label>
+              <!-- Toggles -->
+              <div class="form-toggles">
+                <label class="label" for="uppercase-characters">
+                  <input id="uppercase-characters" type="checkbox" />
+                  Uppercase letters
+                </label>
 
-              <label class="label">
-                <input id="symbol-characters" type="checkbox" />
-                Symbols
-              </label>
-            </div>
-          </form>
-        </div>
+                <label class="label">
+                  <input id="lowercase-characters" type="checkbox" />
+                  Lowercase letters
+                </label>
 
-        <!-- Record password -->
-        <article class="record">
-          <h2 class="record-title">password history</h2>
+                <label class="label">
+                  <input id="numbers-characters" type="checkbox" />
+                  Numbers
+                </label>
 
-          <ul class="record-list">
-            <li class="list-recorded">
-              <span class="password-value">^d3>~9YDA8s}cWN9L_P^</span>
-              <button type="button">
-                <img src="/icons/copy-icon.svg" alt="copy icon" />
-              </button>
-            </li>
+                <label class="label">
+                  <input id="symbol-characters" type="checkbox" />
+                  Symbols
+                </label>
+              </div>
+            </form>
+          </div>
 
-            <li class="list-recorded">
-              <span class="password-value">^d3>~9YDA8s}cWN9L_P^</span>
-              <button type="button">
-                <img src="/icons/copy-icon.svg" alt="copy icon" />
-              </button>
-            </li>
+          <!-- Record password -->
+          <article class="record">
+            <h2 class="record-title">password history</h2>
 
-            <li class="list-recorded">
-              <span class="password-value">^d3>~9YDA8s}cWN9L_P^</span>
-              <button type="button">
-                <img src="/icons/copy-icon.svg" alt="copy icon" />
-              </button>
-            </li>
-          </ul>
+            <ul class="record-list">
+              <li class="list-recorded">
+                <span class="password-value">^d3>~9YDA8s}cWN9L_P^</span>
+                <button type="button">
+                  <img src="/icons/copy-icon.svg" alt="copy icon" />
+                </button>
+              </li>
 
-          <button type="button" class="btn-clear">Clear history</button>
-        </article>
+              <li class="list-recorded">
+                <span class="password-value">^d3>~9YDA8s}cWN9L_P^</span>
+                <button type="button">
+                  <img src="/icons/copy-icon.svg" alt="copy icon" />
+                </button>
+              </li>
+
+              <li class="list-recorded">
+                <span class="password-value">^d3>~9YDA8s}cWN9L_P^</span>
+                <button type="button">
+                  <img src="/icons/copy-icon.svg" alt="copy icon" />
+                </button>
+              </li>
+            </ul>
+
+            <button type="button" class="btn-clear">Clear history</button>
+          </article>
+        </section>
       </div>
     </main>
   </body>
