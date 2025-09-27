@@ -137,8 +137,9 @@ h1 {
 */
 
 /* Range slider container */
-.form-group {
+.form-slider {
   padding: 40px 0;
+  position: relative;
 }
 
 /* Reseting */
@@ -187,6 +188,20 @@ input[type="range"] {
   background-color: var(--yellow-color);
   width: 21px;
   height: 21px;
+}
+
+/* Slider value */
+.range-slider__value {
+  box-sizing: border-box;
+  font-family: "Barlow", sans-serif;
+  font-size: 12px;
+  line-height: 1.3;
+  text-align: center;
+  width: 21px;
+  height: 21px;
+  position: absolute;
+  top: 15px;
+  left: 0;
 }
 
 /* 
