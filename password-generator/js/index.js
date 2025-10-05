@@ -4,6 +4,7 @@ const rangeSliderValueEl = document.querySelector(".range-slider__value");
 const outputPassEl = document.getElementById("password");
 const generateBtnEl = document.querySelector(".btn-generate");
 const togglesEl = document.getElementsByClassName("toggle");
+const strengthmeterEl = document.querySelector(".strengthmeter");
 
 // State of password
 let userParameters = [];
@@ -18,8 +19,12 @@ let includedPreferences = null;
 document.addEventListener("DOMContentLoaded", function () {
   calculateSliderValuePosition(rangeSliderEL.value);
   generateString();
+  renderPassStrengthIndicator();
 });
-generateBtnEl.addEventListener("click", generateString);
+generateBtnEl.addEventListener("click", function () {
+  generateString();
+  renderPassStrengthIndicator();
+});
 rangeSliderEL.addEventListener("change", renderPasswordLength);
 
 // Render the slider length value along with the thumb
@@ -147,4 +152,27 @@ function validateCharactersSet(i) {
 // Return a random number between min and max-1
 function getRandomIndex(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
+}
+
+// Render password strength indicator
+function renderPassStrengthIndicator() {
+  const imgEl = document.createElement("img");
+
+  if (passLength < 8) {
+    imgEl.src = "/icons/strength-high.svg";
+    imgEl.alt = "strengthmeter icon, level none";
+  } else if (passLength < 11) {
+    imgEl.src = "/icons/strength-medium.svg";
+    imgEl.alt = "strengthmeter icon, level weak";
+  } else if (passLength < 13) {
+    imgEl.src = "/icons/strength-weak.svg";
+    imgEl.alt = "strengthmeter icon, level medium";
+  } else {
+    imgEl.src = "/icons/strength-none.svg";
+    imgEl.alt = "strengthmeter icon, level high";
+  }
+
+  // Remove the child of the target node, then renders a new one
+  strengthmeterEl.removeChild(strengthmeterEl.lastElementChild);
+  strengthmeterEl.appendChild(imgEl);
 }
