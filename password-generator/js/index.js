@@ -1,10 +1,25 @@
 // Variables
 const rangeSliderEL = document.getElementById("range-slider");
 const rangeSliderValueEl = document.querySelector(".range-slider__value");
+const outputPassEl = document.getElementById("password");
+const generateBtnEl = document.querySelector(".btn-generate");
+const togglesEl = document.getElementsByClassName("toggle");
+
+// State of password
+let userParameters = [];
+let usersPreference = [];
+let passLength = null;
+let passString = null;
+let usersPreferenceCopy = [];
+let selectedPreferences = [];
+let includedPreferences = null;
 
 // Event listener
+document.addEventListener("DOMContentLoaded", generateString);
+generateBtnEl.addEventListener("click", generateString);
 rangeSliderEL.addEventListener("change", renderPasswordLength);
 
+// Render the slider length value along with the thumb
 function renderPasswordLength(event) {
   const val = event.target.value;
 
@@ -28,4 +43,100 @@ function renderPasswordLength(event) {
 
   rangeSliderValueEl.textContent = val;
   rangeSliderValueEl.style.left = position + "px";
+}
+
+// Load parameters
+function loadParameters() {
+  userParameters = [];
+  for (let i = 0; i < togglesEl.length; i++) {
+    if (togglesEl[i].checked) {
+      userParameters.push(togglesEl[i].id);
+    }
+  }
+}
+
+// Set default state
+function setState() {
+  // Load default state
+  passString = "";
+  passLength = Number(rangeSliderEL.value);
+  usersPreference = userParameters;
+  includedPreferences = 0;
+  selectedPreferences = [];
+  usersPreferenceCopy = [];
+}
+
+// Generate string for password
+function generateString() {
+  // Load user's preferences
+  loadParameters();
+
+  // Initialize state
+  setState();
+
+  // If no dataset selected, stop the code
+  if (userParameters.length === 0) return;
+
+  for (let i = 0; i < passLength; i++) {
+    // Validation
+    validateCharactersSet(i);
+
+    // Pick an index between the user's preference
+    const getIndice = getRandomIndex(0, usersPreference.length);
+
+    // Switch statement
+    switch (usersPreference[getIndice]) {
+      case "uppercase-characters":
+        passString += characters[getRandomIndex(0, 26)];
+        break;
+      case "lowercase-characters":
+        passString += characters[getRandomIndex(26, 52)];
+        break;
+      case "numbers-characters":
+        passString += characters[getRandomIndex(52, 62)];
+        break;
+      case "symbol-characters":
+        passString += characters[getRandomIndex(62, 91)];
+        break;
+    }
+
+    // Set the selected preferences
+    if (!selectedPreferences[getIndice]) {
+      selectedPreferences[getIndice] = usersPreference[getIndice];
+      includedPreferences++;
+    }
+  }
+
+  // Set the input value to be the new string
+  outputPassEl.value = passString;
+}
+
+// Include all user's preferences at least once
+function validateCharactersSet(i) {
+  let remainingPreferences = usersPreference.length - includedPreferences;
+
+  // Validation
+  if (remainingPreferences >= passLength - i) {
+    let position = 0;
+    for (let j = 0; j < usersPreference.length; j++) {
+      // If not included, set a new set
+      if (usersPreference[j] !== selectedPreferences[j]) {
+        usersPreferenceCopy[position] = usersPreference[j];
+        position++;
+      }
+    }
+
+    // Set the remaining preferences
+    usersPreference = usersPreferenceCopy;
+
+    // Reset all values
+    usersPreferenceCopy = [];
+    selectedPreferences = [];
+    includedPreferences = 0;
+  }
+}
+
+// Return a random number between min and max-1
+function getRandomIndex(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
 }
