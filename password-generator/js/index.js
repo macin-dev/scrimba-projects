@@ -15,7 +15,10 @@ let selectedPreferences = [];
 let includedPreferences = null;
 
 // Event listener
-document.addEventListener("DOMContentLoaded", generateString);
+document.addEventListener("DOMContentLoaded", function () {
+  calculateSliderValuePosition(rangeSliderEL.value);
+  generateString();
+});
 generateBtnEl.addEventListener("click", generateString);
 rangeSliderEL.addEventListener("change", renderPasswordLength);
 
@@ -23,6 +26,11 @@ rangeSliderEL.addEventListener("change", renderPasswordLength);
 function renderPasswordLength(event) {
   const val = event.target.value;
 
+  // Calculate range slider value position
+  calculateSliderValuePosition(val);
+}
+
+function calculateSliderValuePosition(value) {
   // Range of two values
   const min = Number(rangeSliderEL.min);
   const max = Number(rangeSliderEL.max);
@@ -31,7 +39,7 @@ function renderPasswordLength(event) {
   const distance = rangeSliderEL.offsetWidth;
 
   // Normalize each data feature between 0 and 1
-  const percent = (val - min) / (max - min);
+  const percent = (value - min) / (max - min);
 
   // The current width of the value label
   const valueWidth = rangeSliderValueEl.offsetWidth;
@@ -41,7 +49,7 @@ function renderPasswordLength(event) {
   // aligned at the track's width right edge
   const position = percent * (distance - valueWidth);
 
-  rangeSliderValueEl.textContent = val;
+  rangeSliderValueEl.textContent = value;
   rangeSliderValueEl.style.left = position + "px";
 }
 
