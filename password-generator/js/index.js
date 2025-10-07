@@ -5,6 +5,7 @@ const outputPassEl = document.getElementById("password");
 const generateBtnEl = document.querySelector(".btn-generate");
 const togglesEl = document.getElementsByClassName("toggle");
 const strengthmeterEl = document.querySelector(".strengthmeter");
+const copyBtnEl = document.querySelector(".btn-copy");
 
 // State of password
 let userParameters = [];
@@ -16,6 +17,14 @@ let selectedPreferences = [];
 let includedPreferences = null;
 
 // Event listener
+copyBtnEl.addEventListener("click", function () {
+  const copyPass = outputPassEl.value;
+
+  navigator.clipboard
+    .writeText(copyPass)
+    .then(() => console.log("Copied!"))
+    .catch((err) => console.log(err));
+});
 document.addEventListener("DOMContentLoaded", function () {
   calculateSliderValuePosition(rangeSliderEL.value);
   generateString();
