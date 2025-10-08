@@ -7,6 +7,7 @@ const togglesEl = document.getElementsByClassName("toggle");
 const strengthmeterEl = document.querySelector(".strengthmeter");
 const copyBtnEl = document.querySelector(".btn-copy");
 const popUpEl = document.querySelector(".popup");
+const barsMeter = document.getElementsByClassName("barmeter");
 
 // State of password
 let userParameters = [];
@@ -175,23 +176,24 @@ function getRandomIndex(min, max) {
 
 // Render password strength indicator
 function renderPassStrengthIndicator() {
-  const imgEl = document.createElement("img");
+  const totalLevel = 4;
+  let levels = 0;
 
   if (passLength < 8) {
-    imgEl.src = "/icons/strength-high.svg";
-    imgEl.alt = "strengthmeter icon, level none";
+    levels = 1;
   } else if (passLength < 11) {
-    imgEl.src = "/icons/strength-medium.svg";
-    imgEl.alt = "strengthmeter icon, level weak";
+    levels = 2;
   } else if (passLength < 13) {
-    imgEl.src = "/icons/strength-weak.svg";
-    imgEl.alt = "strengthmeter icon, level medium";
+    levels = 3;
   } else {
-    imgEl.src = "/icons/strength-none.svg";
-    imgEl.alt = "strengthmeter icon, level high";
+    levels = 4;
   }
 
-  // Remove the child of the target node, then renders a new one
-  strengthmeterEl.removeChild(strengthmeterEl.lastElementChild);
-  strengthmeterEl.appendChild(imgEl);
+  for (let i = 0; i < totalLevel; i++) {
+    if (totalLevel - levels <= i) {
+      barsMeter[i].style.backgroundColor = "#ff003c";
+    } else {
+      barsMeter[i].style.backgroundColor = "#00f0ff";
+    }
+  }
 }
