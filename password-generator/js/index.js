@@ -6,6 +6,7 @@ const generateBtnEl = document.querySelector(".btn-generate");
 const togglesEl = document.getElementsByClassName("toggle");
 const strengthmeterEl = document.querySelector(".strengthmeter");
 const copyBtnEl = document.querySelector(".btn-copy");
+const popUpEl = document.querySelector(".popup");
 
 // State of password
 let userParameters = [];
@@ -22,7 +23,16 @@ copyBtnEl.addEventListener("click", function () {
 
   navigator.clipboard
     .writeText(copyPass)
-    .then(() => console.log("Copied!"))
+    .then(() => {
+      popUpEl.classList.remove("popup-hide");
+      popUpEl.classList.add("popup-show");
+
+      // Remove it after a certain time
+      setTimeout(() => {
+        popUpEl.classList.remove("popup-show");
+        popUpEl.classList.add("popup-hide");
+      }, 3000);
+    })
     .catch((err) => console.log(err));
 });
 document.addEventListener("DOMContentLoaded", function () {

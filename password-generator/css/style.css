@@ -8,6 +8,7 @@
   --blue-color: #00f0ff;
   --blue-transparent-color: #00f0ff1a;
   --yellow-color: #f8ef00;
+  --popup-color: #1a1a1a;
 }
 
 /* RESETING BROWSER STYLES */
@@ -307,6 +308,27 @@ input[type="checkbox"]:checked::before {
   letter-spacing: 4px;
   text-align: center;
   color: var(--yellow-color);
+}
+
+/* Popup */
+.popup {
+  font-family: "Barlow", sans-serif;
+  box-sizing: border-box;
+  width: 120px;
+  position: absolute;
+  top: 50px;
+  background-color: var(--popup-color);
+  padding: 8px 16px;
+  border-left: 2px solid var(--blue-color);
+  transition: right 0.3s ease-in-out;
+}
+
+.popup-show {
+  right: 0px;
+}
+
+.popup-hide {
+  right: -120px;
 }
 
 /* BREAKPOINTS */
