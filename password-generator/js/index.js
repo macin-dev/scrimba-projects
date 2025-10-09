@@ -8,8 +8,10 @@ const strengthmeterEl = document.querySelector(".strengthmeter");
 const copyBtnEl = document.querySelector(".btn-copy");
 const popUpEl = document.querySelector(".popup");
 const barsMeter = document.getElementsByClassName("barmeter");
+const listRecordEl = document.querySelector(".record-list");
 
 // State of password
+const passwordHistory = [];
 let userParameters = [];
 let usersPreference = [];
 let passLength = null;
@@ -21,20 +23,9 @@ let includedPreferences = null;
 // Event listener
 copyBtnEl.addEventListener("click", function () {
   const copyPass = outputPassEl.value;
-
-  navigator.clipboard
-    .writeText(copyPass)
-    .then(() => {
-      popUpEl.classList.remove("popup-hide");
-      popUpEl.classList.add("popup-show");
-
-      // Remove it after a certain time
-      setTimeout(() => {
-        popUpEl.classList.remove("popup-show");
-        popUpEl.classList.add("popup-hide");
-      }, 3000);
-    })
-    .catch((err) => console.log(err));
+  copyToClipboard(copyPass);
+  passwordHistory.push(copyPass);
+  renderPasswords();
 });
 document.addEventListener("DOMContentLoaded", function () {
   calculateSliderValuePosition(rangeSliderEL.value);
@@ -174,6 +165,23 @@ function getRandomIndex(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
+// Copy to clipboard
+function copyToClipboard(copyPass) {
+  navigator.clipboard
+    .writeText(copyPass)
+    .then(() => {
+      popUpEl.classList.remove("popup-hide");
+      popUpEl.classList.add("popup-show");
+
+      // Remove it after a certain time
+      setTimeout(() => {
+        popUpEl.classList.remove("popup-show");
+        popUpEl.classList.add("popup-hide");
+      }, 3000);
+    })
+    .catch((err) => console.log(err));
+}
+
 // Render password strength indicator
 function renderPassStrengthIndicator() {
   const totalLevel = 4;
@@ -195,5 +203,46 @@ function renderPassStrengthIndicator() {
     } else {
       barsMeter[i].style.backgroundColor = "#00f0ff";
     }
+  }
+}
+
+// Render out the record list of passwords
+function renderPasswords() {
+  // Remove previous nodes
+  removeChildElements();
+
+  for (let i = passwordHistory.length - 1; i >= 0; i--) {
+    createPasswordElement(passwordHistory[i]);
+  }
+}
+
+// Create the structure of the HTML for each recorded password
+function createPasswordElement(copiedPassword) {
+  // Create the structure of the HTML
+  const liEl = document.createElement("li");
+  const spanEL = document.createElement("span");
+  const buttonEl = document.createElement("button");
+  const imgEl = document.createElement("img");
+
+  // Add attributes
+  liEl.classList.add("list-recorded");
+  spanEL.classList.add("password-value");
+  buttonEl.type = "button";
+  imgEl.src = "/icons/copy-icon.svg";
+  imgEl.alt = "copy icon";
+  spanEL.textContent = copiedPassword;
+
+  // Append elements
+  buttonEl.appendChild(imgEl);
+  liEl.appendChild(spanEL);
+  liEl.appendChild(buttonEl);
+  listRecordEl.append(liEl);
+}
+
+// Remove previous child elements
+function removeChildElements() {
+  // As long as there's a child, it will remove it from the DOM
+  while (listRecordEl.lastChild) {
+    listRecordEl.removeChild(listRecordEl.lastChild);
   }
 }
