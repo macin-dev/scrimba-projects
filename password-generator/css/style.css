@@ -300,6 +300,7 @@ input[type="checkbox"]:checked::before {
   display: flex;
   flex-direction: column;
   gap: 30px;
+  padding-bottom: 50px;
 }
 
 .record-title {
@@ -337,6 +338,14 @@ input[type="checkbox"]:checked::before {
   letter-spacing: 4px;
   text-align: center;
   color: var(--yellow-color);
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease-out;
+  align-self: center;
+}
+
+.btn-clear:hover {
+  box-shadow: 0 0 15px var(--blue-color), 0 0 15px var(--blue-color);
 }
 
 /* Popup */

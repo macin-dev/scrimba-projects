@@ -9,9 +9,10 @@ const copyBtnEl = document.querySelector(".btn-copy");
 const popUpEl = document.querySelector(".popup");
 const barsMeter = document.getElementsByClassName("barmeter");
 const listRecordEl = document.querySelector(".record-list");
+const clearBtnEl = document.querySelector(".btn-clear");
 
 // State of password
-const passwordHistory = [];
+let passwordHistory = [];
 let userParameters = [];
 let usersPreference = [];
 let passLength = null;
@@ -37,6 +38,10 @@ generateBtnEl.addEventListener("click", function () {
   renderPassStrengthIndicator();
 });
 rangeSliderEL.addEventListener("change", renderPasswordLength);
+clearBtnEl.addEventListener("click", function () {
+  passwordHistory = [];
+  renderPasswords();
+});
 
 // Render the slider length value along with the thumb
 function renderPasswordLength(event) {
@@ -231,6 +236,11 @@ function createPasswordElement(copiedPassword) {
   imgEl.src = "/icons/copy-icon.svg";
   imgEl.alt = "copy icon";
   spanEL.textContent = copiedPassword;
+
+  // Add event listeners
+  buttonEl.addEventListener("click", function () {
+    copyToClipboard(copiedPassword);
+  });
 
   // Append elements
   buttonEl.appendChild(imgEl);
