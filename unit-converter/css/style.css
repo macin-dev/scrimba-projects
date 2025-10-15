@@ -15,6 +15,14 @@ p {
 /* Global styles */
 body {
   font-family: "Inter", sans-serif;
+  background-color: #5e5d5d;
+}
+
+/* WRAPPER */
+.wrapper-card {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 550px;
 }
 
 /* HEADER */
@@ -98,4 +106,13 @@ body {
 .unit-type p {
   font-size: 16px;
   color: #b3b1b1;
+}
+
+/* Media queries */
+@media (min-width: 551px) {
+  .wrapper-card {
+    margin-block: 30px;
+    border-radius: 5px;
+    overflow: hidden;
+  }
 }
